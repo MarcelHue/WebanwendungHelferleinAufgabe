@@ -1,3 +1,6 @@
+using Autofac;
+using WebanwendungHelferleinAufgabe.AutoFac;
+
 namespace WebanwendungHelferleinAufgabe;
 
 static class Program
@@ -10,7 +13,10 @@ static class Program
     {
         // To customize application configuration such as set high DPI settings or default font,
         // see https://aka.ms/applicationconfiguration.
+        
+        var container = Container.Configure();
         ApplicationConfiguration.Initialize();
-        Application.Run(new Form1());
+        // Application.Run(new MainWindow());
+        Application.Run(container.Resolve<MainWindow>());
     }
 }
