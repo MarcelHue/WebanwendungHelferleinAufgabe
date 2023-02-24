@@ -1,12 +1,12 @@
 using ServiceStack.DataAnnotations;
 
-namespace WebanwendungHelferleinAufgabe.Entity;
+namespace WHA.Entity;
 
 [Alias("PerformanceType")]
-public class Performance
+public class Performance : IBaseDbEntity
 {
     [Alias("PerformanceTypeID")]
-    public int PerformanceId { get; set; }
+    public long Id { get; set; }
     
     [Alias("PerformanceType")]
     public string Type { get; set; }

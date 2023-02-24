@@ -1,27 +1,20 @@
+using Microsoft.VisualBasic.CompilerServices;
 using ServiceStack.DataAnnotations;
 
-namespace WebanwendungHelferleinAufgabe.Entity;
+namespace WHA.Entity;
 
 [Alias("Member")]
-public class Member
+public class Member : IBaseDbEntity
 {
-
     [Alias("MemberID")]        
-    public int MemberId { get; set; }
+    public long Id { get; set; }
     
     [Alias("AddressID")]        
     [References(typeof(Adress))]
-    public int AddressId { get; set; }
+    public long AddressId { get; set; }
 
     [Reference]
     public Adress Adress { get; set; }
-    
-    [Alias("SalesID")]   
-    [References(typeof(Conversions))]
-    public int SalesId { get; set; }
-    
-    [Reference] 
-    public Conversions Conversions { get; set; }
     
     [Alias("LastName")]        
     public string LastName { get; set; }
@@ -35,4 +28,13 @@ public class Member
     [Alias("EmailAddress")]        
     public string EMail { get; set; }
     
+    [Alias("TotalRevenue")]
+    public decimal TotalRevenue { get; set; }
+    
+    [Alias("TotalExpenses")]
+    public decimal TotalExpenses { get; set; }
+
+    [Ignore]
+    public decimal Sum => this.TotalRevenue - this.TotalExpenses;
+
 }

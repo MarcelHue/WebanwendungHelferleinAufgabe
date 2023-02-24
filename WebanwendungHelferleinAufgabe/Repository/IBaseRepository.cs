@@ -2,7 +2,7 @@ using System.Data;
 using System.Linq.Expressions;
 using ServiceStack.OrmLite;
 
-namespace WebanwendungHelferleinAufgabe.Repository;
+namespace WHA.Repository;
 
 public interface IBaseRepository<T>
     where T : class

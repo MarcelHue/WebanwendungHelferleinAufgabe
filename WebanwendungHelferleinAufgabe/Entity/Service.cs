@@ -1,34 +1,33 @@
 using ServiceStack.DataAnnotations;
 
-namespace WebanwendungHelferleinAufgabe.Entity;
+namespace WHA.Entity;
 
 [Alias("Service")]
-public class Service
+public class Service : IBaseDbEntity
 {
     [Alias("ServiceID")]
-    public int ServiceId { get; set; }
+    public long Id { get; set; }
     
     [Alias("EquipmentID")]
     [References(typeof(Equipment))]
-    public int EquipmentId { get; set; }
+    public long EquipmentId { get; set; }
 
     [Reference]
     public Equipment Equipment { get; set; }
     
-    [Alias("PerformanceId")]
+    [Alias("PerformanceTypeID")]
     [References(typeof(Performance))]
-    public int PerformanceId { get; set; }
+    public long PerformanceId { get; set; }
 
     [Reference]
     public Performance Performance { get; set; }
     
     [Alias("ServiceStart")]
-    public DateTime Start { get; set; }
+    public DateTime StartDate { get; set; }
     
     [Alias("ServiceEnd")]
-    public DateTime End { get; set; }
+    public DateTime EndDate { get; set; }
     
-    [Alias("ServiceTime")]
-    public DateTime Duration { get; set; }
-    
+    [Ignore]
+    public TimeSpan Duration => this.EndDate - this.StartDate;
 }

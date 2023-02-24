@@ -1,4 +1,4 @@
-﻿namespace WebanwendungHelferleinAufgabe;
+﻿namespace WHA;
 
 partial class MainWindow
 {

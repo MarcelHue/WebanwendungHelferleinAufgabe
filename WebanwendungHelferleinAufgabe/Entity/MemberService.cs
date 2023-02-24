@@ -1,30 +1,30 @@
 using ServiceStack.DataAnnotations;
 
-namespace WebanwendungHelferleinAufgabe.Entity;
+namespace WHA.Entity;
 
 [Alias("MemberService")]
-public class MemberService
+public class MemberService : IBaseDbEntity
 {
-    [Alias("MemberSericeID")]
-    public int MemberSericeId { get; set; }
+    [Alias("MemberServiceID")]
+    public long Id { get; set; }
     
     [Alias("ServiceGiverID")]    
     [References(typeof(Member))]
-    public int ServiceGiverId { get; set; }
+    public long ServiceGiverId { get; set; }
     
     [Reference]
     public Member ServiceGiver { get; set; }
     
     [Alias("ServiceUserID")]    
     [References(typeof(Member))]
-    public int ServiceUserId { get; set; }
+    public long ServiceUserId { get; set; }
 
     [Reference]
     public Member ServiceUser { get; set; }
     
-    [Alias("LastName")]    
+    [Alias("ServiceID")]    
     [References(typeof(Service))]
-    public int ServiceId { get; set; }
+    public long ServiceId { get; set; }
     
     [Reference] 
     public Service Service { get; set; }

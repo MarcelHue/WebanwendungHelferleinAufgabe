@@ -1,12 +1,12 @@
 using ServiceStack.DataAnnotations;
 
-namespace WebanwendungHelferleinAufgabe.Entity;
+namespace WHA.Entity;
 
 [Alias("Equipment")]
-public class Equipment
+public class Equipment : IBaseDbEntity
 {
     [Alias("EquipmentID")]
-    public int EquipmentId { get; set; }
+    public long Id { get; set; }
     
     [Alias("EquipmentType")]
     public string EquipmentType { get; set; }

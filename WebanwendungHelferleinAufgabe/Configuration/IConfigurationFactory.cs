@@ -1,6 +1,5 @@
-using Google.Protobuf.WellKnownTypes;
 
-namespace WebanwendungHelferleinAufgabe.Configuration;
+namespace WHA.Configuration;
 
 public interface IConfigurationFactory
 {
