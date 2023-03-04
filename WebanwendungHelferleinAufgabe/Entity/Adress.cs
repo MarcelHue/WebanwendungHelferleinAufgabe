@@ -1,12 +1,12 @@
 using ServiceStack.DataAnnotations;
 
-namespace WebanwendungHelferleinAufgabe.Entity;
+namespace WHA.Entity;
 
 [Alias("Address")]
-public class Adress
+public class Adress : IBaseDbEntity
 {
     [Alias("AddressID")]
-    public int AddressId { get; set; }
+    public long Id { get; set; }
     
     [Alias("PLZ")]
     public string Plz { get; set; }

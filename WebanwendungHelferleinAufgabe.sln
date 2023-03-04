@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebanwendungHelferleinAufgabe", "WebanwendungHelferleinAufgabe\WebanwendungHelferleinAufgabe.csproj", "{95E859E8-0781-441E-80AB-5C29390B9061}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WHA", "WebanwendungHelferleinAufgabe\WHA.csproj", "{95E859E8-0781-441E-80AB-5C29390B9061}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

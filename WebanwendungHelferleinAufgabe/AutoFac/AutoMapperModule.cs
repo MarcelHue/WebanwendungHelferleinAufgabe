@@ -2,7 +2,7 @@ using System.Reflection;
 using Autofac;
 using AutoMapper;
 
-namespace WebanwendungHelferleinAufgabe.AutoFac
+namespace WHA.AutoFac
 {
     public class AutoMapperModule : Autofac.Module
     {
@@ -41,7 +41,7 @@ namespace WebanwendungHelferleinAufgabe.AutoFac
                 builder.RegisterType(type.AsType()).InstancePerDependency();
             }
 
-            builder.Register<IConfigurationProvider>(ctx =>
+            builder.Register<IConfigurationProvider>(_ =>
                 new MapperConfiguration(cfg => cfg.AddMaps(assembliesToScanArray)));
 
             builder.Register(c =>

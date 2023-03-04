@@ -1,10 +1,8 @@
 using Autofac;
-using WebanwendungHelferleinAufgabe.AutoFac;
-using WebanwendungHelferleinAufgabe.Entity;
-using WebanwendungHelferleinAufgabe.Programm;
-using WebanwendungHelferleinAufgabe.Repository;
+using WHA.AutoFac;
+using WHA.Programm.Interface;
 
-namespace WebanwendungHelferleinAufgabe;
+namespace WHA;
 
 static class MainClass
 {
@@ -14,7 +12,6 @@ static class MainClass
         //Init Container For Dependency Injections
         ApplicationConfiguration.Initialize();
         var container = Container.Configure();
-
         var testClass = container.Resolve <ITestClass>();
         
         testClass.Test();

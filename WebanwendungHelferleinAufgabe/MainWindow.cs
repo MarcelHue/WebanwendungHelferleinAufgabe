@@ -1,9 +1,9 @@
-namespace WebanwendungHelferleinAufgabe;
+namespace WHA;
 
 public partial class MainWindow : Form
 {
     public MainWindow()
     {
-        InitializeComponent();
+        this.InitializeComponent();
     }
 }

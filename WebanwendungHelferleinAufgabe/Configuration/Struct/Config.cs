@@ -1,4 +1,4 @@
-namespace WebanwendungHelferleinAufgabe.Configuration.Struct;
+namespace WHA.Configuration.Struct;
 
 public class Config
 {

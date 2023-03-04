@@ -4,11 +4,10 @@ using System.Reflection;
 using Autofac;
 using ServiceStack.OrmLite;
 using ServiceStack.OrmLite.Converters;
-using WebanwendungHelferleinAufgabe.Configuration;
-using WebanwendungHelferleinAufgabe.Configuration.Struct;
-using WebanwendungHelferleinAufgabe.Repository;
+using WHA.Configuration;
+using WHA.Repository;
 
-namespace WebanwendungHelferleinAufgabe.AutoFac
+namespace WHA.AutoFac
 {
     public class InterfaceModule : Autofac.Module
     {
@@ -21,23 +20,21 @@ namespace WebanwendungHelferleinAufgabe.AutoFac
                 .Where(y => !y.Name.EndsWith("PlaceholderAttribute"))
                 .AsImplementedInterfaces().PropertiesAutowired();
             builder.Register(c => c.Resolve<IConfigurationFactory>().LoadDefault()).AsSelf();
-            builder.Register((c, p) => CreateDatabaseFactory().Open()).As<IDbConnection>().ExternallyOwned();
+            builder.Register((_, _) => CreateDatabaseFactory().Open()).As<IDbConnection>().ExternallyOwned();
             builder.RegisterAssemblyTypes(Assembly.GetAssembly(typeof(IFileSystem))!).AsImplementedInterfaces();
             builder.RegisterGeneric(typeof(BaseRepository<>)).As(typeof(IBaseRepository<>)).InstancePerLifetimeScope();
 
         }
 
-        private Config Config { get; set; }
-        private OrmLiteConnectionFactory CreateDatabaseFactory()
+        private static OrmLiteConnectionFactory CreateDatabaseFactory()
         {
-            var cfg = new ConfigurationFactory().LoadDefault();
+            var cfg = new ConfigurationFactory().LoadDefault()?.MqSqlData;
             MySqlDialect.Provider.RegisterConverter<DateTime>(new DateTimeConverter());
             MySqlDialect.Provider.GetDateTimeConverter().DateStyle = DateTimeKind.Local;
-            var connectionstring = "";
-                // "Server=" + cfg.Server +
-                //                    ";Database=" + cfg.Database +
-                //                    ";Uid=" + cfg.UID +
-                //                    ";Pwd=" + cfg.PWD + ";";
+            var connectionstring = "Server=" + cfg?.Server +
+                                   ";Database=" + cfg?.Database +
+                                   ";Uid=" + cfg?.Uid +
+                                   ";Pwd=" + cfg?.Pwd + ";";
             return new OrmLiteConnectionFactory(connectionstring, MySqlDialect.Provider);
         }
     }

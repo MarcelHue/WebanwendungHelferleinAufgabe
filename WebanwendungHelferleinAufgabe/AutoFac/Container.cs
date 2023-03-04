@@ -1,11 +1,6 @@
-using System.Data;
-using System.IO.Abstractions;
-using System.Reflection;
 using Autofac;
-using ServiceStack.OrmLite;
-using ServiceStack.OrmLite.Converters;
 
-namespace WebanwendungHelferleinAufgabe.AutoFac;
+namespace WHA.AutoFac;
 
 public static class Container
 {
